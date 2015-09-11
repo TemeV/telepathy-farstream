@@ -1,5 +1,5 @@
 Name:           telepathy-farstream
-Version:        0.4.0
+Version:        0.6.2
 Release:        1
 Summary:        Telepathy client library to handle Call channels
 Group:          System/Libraries
@@ -8,8 +8,8 @@ URL:            http://www.freedesktop.org/wiki/Software/Farstream
 Source0:        http://telepathy.freedesktop.org/releases/telepathy-farstream/%{name}-%{version}.tar.gz
 Patch0:         disable-gtkdoc.patch
 BuildRequires:  python
-BuildRequires:  pkgconfig(telepathy-glib)
-BuildRequires:  pkgconfig(farstream-0.1)
+BuildRequires:  pkgconfig(telepathy-glib) >= 0.21
+BuildRequires:  pkgconfig(farstream-0.2)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
 
@@ -34,7 +34,7 @@ Telepathy client libraries for video conferencing applications
 %patch0 -p1
 
 %build
-%autogen --disable-python --enable-static=no --disable-gtk-doc
+%autogen --disable-python --enable-introspection=no --enable-static=no --disable-gtk-doc
 make %{?_smp_mflags}
 
 %install
